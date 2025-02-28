@@ -8,7 +8,7 @@ public class OpenQuestionCard {
         if (argument == null) {
             throw new NullPointerException("String must not be null");
         }
-        if (argument.isEmpty() || argument.length() > 255) {
+        if (argument.isBlank() || argument.length() > 255) {
             throw new IllegalArgumentException("String has inappropriate length");
         }
     }

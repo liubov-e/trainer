@@ -20,8 +20,8 @@ class OpenQuestionCardTest {
         String expectedAnswer = "Would You like to do something?";
         assertThrows(NullPointerException.class, () -> new OpenQuestionCard(null, expectedAnswer));
         assertThrows(NullPointerException.class, () -> new OpenQuestionCard(question, null));
-        assertThrows(IllegalArgumentException.class, () -> new OpenQuestionCard("", expectedAnswer));
-        assertThrows(IllegalArgumentException.class, () -> new OpenQuestionCard(question, ""));
+        assertThrows(IllegalArgumentException.class, () -> new OpenQuestionCard("   \t", expectedAnswer));
+        assertThrows(IllegalArgumentException.class, () -> new OpenQuestionCard(question, "   \t"));
         assertThrows(IllegalArgumentException.class, () -> new OpenQuestionCard("X".repeat(300), expectedAnswer));
         assertThrows(IllegalArgumentException.class, () -> new OpenQuestionCard(question, "X".repeat(300)));
     }
@@ -51,7 +51,7 @@ class OpenQuestionCardTest {
         String expectedAnswer = "Would You like to do something?";
         OpenQuestionCard card = new OpenQuestionCard(question, expectedAnswer);
         assertThrows(NullPointerException.class, () -> card.checkAnswer(null));
-        assertThrows(IllegalArgumentException.class, () -> card.checkAnswer(""));
+        assertThrows(IllegalArgumentException.class, () -> card.checkAnswer("   \t"));
         assertThrows(IllegalArgumentException.class, () -> card.checkAnswer("X".repeat(300)));
     }
 }
